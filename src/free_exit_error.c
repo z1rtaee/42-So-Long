@@ -6,14 +6,23 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 17:21:25 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/07 12:47:41 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:35:31 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	exit_error(char *error_message, char *str, int fd)
+void	free_all(t_solong *data)
 {
+	if (data->map.map)
+		free_ar((void **)data->map.map);
+	if (data->map.map_cpy)
+		free_ar((void **)data->map.map_cpy);
+}
+
+void	exit_error(char *error_message, t_solong *data, char *str, int fd)
+{
+	free_all(data);
 	if (str)
 		free(str);
 	if (fd > -1)

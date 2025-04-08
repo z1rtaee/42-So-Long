@@ -6,13 +6,13 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 00:40:29 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/07 18:25:15 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:42:18 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	copy_map(char *map, int rows, t_solong *data)
+void	create_map(char *map, int rows, t_solong *data)
 {
 	char	**map_dup;
 	char	*line;
@@ -24,90 +24,69 @@ void	copy_map(char *map, int rows, t_solong *data)
 	fd = open(map, O_RDONLY);
 	map_dup = malloc(sizeof(char *) * (rows + 1));
 	if (!map_dup)
-		exit_error("Error", NULL, fd);
+		exit_error("Error", data, NULL, fd);
 	line = get_next_line(fd);
 	while (line)
 	{
 		trim = ft_strtrim(line, "\n");
-		map_dup[i] = trim;
+		map_dup[i] = ft_strdup(trim);
 		free(trim);
 		line = get_next_line(fd);
 		i++;
 	}
 	map_dup[i] = NULL;
 	data->map.map = map_dup;
-	free(map_dup);
 	close(fd);
 }
 
-void	count_characters(char *map, int *p, int *e, int *c)
+void	cpy_map(t_map *map)
 {
-	int		i;
-	int		fd;
-	char	*row;
+	int	x;
 
-	fd = open(map, O_RDONLY);
-	row = get_next_line(fd);
-	while (row)
-	{
-		i = 0;
-		while (row[i])
-		{
-			if (row[i] == 'P')
-				(*p)++;
-			else if (row[i] == 'E')
-				(*e)++;
-			else if (row[i] == 'C')
-				(*c)++;
-			else if (row[i] != '0' && row[i] != '1' && row[i] != '\n')
-				exit_error("Error: Invalid character in map.", row, fd);
-			i++;
-		}
-		free(row);
-		row = get_next_line(fd);
-	}
-	close(fd);
+	x = -1;
+	map->map_cpy = malloc(sizeof(char *) * (map->row_count + 1));
+	while (map->map[++x])
+		map->map_cpy[x] = ft_strdup(map->map[x]);
+	map->map_cpy[x] = NULL;
 }
 
-// void	check_rows(t_solong *data)
-// {
-// 	int	y;
+void	count_characters(t_solong *data, int *p, int *e, int *c)
+{
+	int		y;
+	int		x;
 
-// 	y = 0;
-// 	while (data->map.map[0][y])
-// 	{
-// 		if (data->map.map[0][y] != '1')
-// 			exit_error("Top row is not closed.", NULL, -1);
-// 		y++;
-// 	}
-// 	y = 0;
-// 	while (data->map.map[data->map.row_count - 1][y])
-// 	{
-// 		if (data->map.map[data->map.row_count - 1][y] != '1')
-// 			exit_error("Bottom row is not closed.", NULL, -1);
-// 		y++;
-// 	}
-// }
+	x = 0;
+	while (data->map.map[x])
+	{
+		y = 0;
+		while (data->map.map[x][y])
+		{
+			if (data->map.map[x][y] == 'P')
+			{
+				data->player.pos_x = x;
+				data->player.pos_y = y;
+				printf("player's x-axis position -> %i\n player's y-axis position -> %i\n", data->player.pos_x, data->player.pos_y);
+				(*p)++;
+			}
+			else if (data->map.map[x][y] == 'E')
+				(*e)++;
+			else if (data->map.map[x][y] == 'C')
+				(*c)++;
+			else if (data->map.map[x][y] != '0' && data->map.map[x][y] != '1' && data->map.map[x][y] != '\n')
+				exit_error("Error: Invalid character in map.", data, NULL, -1);
+			y++;
+		}
+		x++;
+	}
+}
 
-// void	check_cols(char **map, t_solong *data)
-// {
-// 	int	x;
-// 	int	y;
-
-// 	x = 0;
-// 	y = 0;
-// 	data->map.col_count = ft_strlen(map[0]);
-// 	while (map[0][y])
-// 	{
-// 		if (map[0][y] != 1)
-// 			exit_error("Top row is not closed.", NULL, -1);
-// 		y++;
-// 	}
-// 	y = 0;
-// 	while (map[data->map.row_count][y])
-// 	{
-// 		if (map[data->map.row_count][y] != 1)
-// 			exit_error("Bottom row is not closed.", NULL, -1);
-// 		y++;
-// 	}
-// }
+void	flood_fill(char **map, int x, int y)
+{
+	if (map[x][y] == '1')
+		return ;
+	map[x][y] = '1';
+	flood_fill(map, x + 1, y);
+	flood_fill(map, x - 1, y);
+	flood_fill(map, x, y + 1);
+	flood_fill(map, x, y - 1);
+}

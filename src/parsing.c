@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 17:08:47 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/07 18:01:29 by bpires-r         ###   ########.fr       */
+ /*   Updated: 2025/04/08 19:14:00 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	read_map(char *map, t_solong *data)
 
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
-		exit_error("Error", NULL, fd);
+		exit_error("Error", data, NULL, fd);
 	line = ft_strtrim(get_next_line(fd), "\n");
 	if (!line)
-		exit_error("Error", line, fd);
+		exit_error("Error", data, line, fd);
 	row_len = ft_strlen(line);
 	while (line)
 	{
@@ -43,30 +43,72 @@ void	read_map(char *map, t_solong *data)
 		line = ft_strtrim(get_next_line(fd), "\n");
 		data->map.row_count++;
 		if (line && ft_strlen(line) != row_len)
-			exit_error("Error", line, fd);
+			exit_error("Error", data, line, fd);
 	}
-	copy_map(map, data->map.row_count, data);
+	create_map(map, data->map.row_count, data);
 	close(fd);
 }
 
-void	check_characters(char *map, t_solong data)
+void	check_characters(t_solong *data)
 {
 	int	p;
 	int	e;
-	int	c;
 
 	p = 0;
 	e = 0;
-	c = 0;
-	count_characters(map, &p, &e, &c);
-	data.map.c_count = c;
+	count_characters(data, &p, &e, &data->map.c_count);
 	if (p != 1)
-		exit_error("Error: Map must contain exactly one player (P).", NULL, -1);
+		exit_error("Error: Map must contain exactly one player (P).", data, NULL, -1);
 	if (e != 1)
-		exit_error("Error: Map must contain exactly one exit (E).", NULL, -1);
-	if (c < 1)
+		exit_error("Error: Map must contain exactly one exit (E).", data, NULL, -1);
+	if (data->map.c_count < 1)
 		exit_error("Error: Map must contain at least one collectible (C).",
-			NULL, -1);
+			data, NULL, -1);
 }
 
+void	check_walls(t_solong *data)
+{
+	int	y;
+	int	x;
 
+	y = 0;
+	x = 0;
+	data->map.col_count = ft_strlen(data->map.map[0]);
+	while (y < data->map.col_count)
+	{
+		if (data->map.map[0][y] != '1' 
+			   || data->map.map[data->map.row_count - 1][y] != '1')
+			exit_error("row is not closed.", data, NULL, -1);
+		y++;
+	}
+	while (x < data->map.row_count)
+	{
+		if (data->map.map[x][0] != '1' 
+			   || data->map.map[x][data->map.col_count - 1] != '1')
+			exit_error("collumn is not closed.", data, NULL, -1);
+		x++;
+	}
+}
+
+void	is_solvable(t_solong *data)
+{
+	int x;
+	int y;
+
+	x = 0;
+	y = 0;
+	cpy_map(&data->map);
+	flood_fill(data->map.map_cpy, data->player.pos_x, data->player.pos_y);
+	x = 0;
+	while (data->map.map_cpy[x])
+	{
+		y = 0;
+		while (data->map.map_cpy[x][y])
+		{
+			if (data->map.map_cpy[x][y] != '1')
+				exit_error("Map is not solvable", data, NULL, -1);
+			y++;
+		}
+		x++;
+	}
+}
