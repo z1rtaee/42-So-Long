@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:11:52 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/08 19:41:49 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/12 01:39:10 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,68 @@
 # include "../complete_lib/42_Libft/libft.h"
 # include "../complete_lib/42_Printf/ft_printf.h"
 # include "../complete_lib/minilibx-linux/mlx.h"
+# include "../complete_lib/minilibx-linux/mlx_int.h"
+
+# define WIDTH 1920
+# define HEIGHT 1080
+
+typedef struct s_c4_tiles
+{
+	t_img	frame_1;
+	t_img	frame_2;
+	t_img	frame_3;
+	t_img	frame_4;
+}				t_c4_tiles;
+
+typedef struct s_c3_tiles
+{
+	t_img	frame_1;
+	t_img	frame_2;
+	t_img	frame_3;
+	t_img	frame_4;
+}				t_c3_tiles;
+
+typedef struct s_c2_tiles
+{
+	t_img	frame_1;
+	t_img	frame_2;
+	t_img	frame_3;
+	t_img	frame_4;
+}				t_c2_tiles;
+
+typedef struct s_c1_tiles
+{
+	t_img	frame_1;
+	t_img	frame_2;
+	t_img	frame_3;
+	t_img	frame_4;
+}				t_c1_tiles;
+
+typedef struct s_player_tiles
+{
+	t_img	f_stand;
+	t_img	l_walk_1;
+	t_img	l_walk_2;
+	t_img	r_walk_1;
+	t_img	r_walk_2;
+	t_img	u_walk_1;
+	t_img	u_walk_2;
+	t_img	d_walk_1;
+	t_img	d_walk_2;
+}				t_player_tiles;
+
+typedef struct s_tiles
+{
+	t_player_tiles 	player;
+	t_c1_tiles		c1;
+	t_c2_tiles		c2;
+	t_c3_tiles		c3;
+	t_c4_tiles		c4;
+	t_img			open_e;
+	t_img			closed_e;
+	t_img			wall;
+	t_img			floor;
+}				t_tiles;
 
 typedef struct s_map
 {
@@ -25,7 +87,7 @@ typedef struct s_map
 	int		row_count;
 	int		col_count;
 	int		c_count;
-
+	int		c_collected;
 }			t_map;
 
 typedef struct s_player
@@ -36,11 +98,10 @@ typedef struct s_player
 
 typedef struct s_solong
 {
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
+	void		*mlx;
+	void		*window;
+	t_img		final_screen;
+	t_tiles		tile_frame;
 	t_map		map;
 	t_player	player;
 }			t_solong;
@@ -66,5 +127,21 @@ void		flood_fill(char **map, int x, int y);
 void		is_solvable(t_solong *data);
 
 void		exit_error(char *error_message, t_solong *data, char *str, int fd);
+
+void		data_init(t_solong *data);
+
+void		load_player(t_solong *data);
+
+void		load_map(t_solong *data);
+
+void		load_collectibles(t_solong *data);
+
+void		draw_tiles(t_solong *data);
+
+void		get_adr_collectibles(t_solong *data);
+
+void		pixel_put(t_img *img, int x, int y, int color);
+
+void		put_img_to_screen(t_img *screen, t_img img, int screen_x, int screen_y);
 
 #endif

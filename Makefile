@@ -10,7 +10,8 @@ NAME			= so_long
 CC				= cc
 CFLAGS			= -Wall -Wextra -Werror -g
 
-SRCS	 		= $(SRC_DIR)so_long.c $(SRC_DIR)parsing.c $(SRC_DIR)free_exit_error.c $(SRC_DIR)map_utils.c
+SRCS	 		= $(SRC_DIR)so_long.c $(SRC_DIR)parsing.c $(SRC_DIR)free_exit_error.c $(SRC_DIR)map_utils.c \
+				  $(SRC_DIR)mlx_init.c $(SRC_DIR)load_images.c
 SRC_DIR			= src/
 
 OBJS 			= $(SRCS:%.c=%.o)

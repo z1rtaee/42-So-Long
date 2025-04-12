@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 17:13:29 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/08 19:45:54 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/10 22:37:38 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 void	init_so_long(t_solong *data)
 {
-	data->img = NULL;
-	data->addr = NULL;
-	data->bits_per_pixel = 0;
-	data->line_length = 0;
-	data->endian = 0;
+	data->mlx = NULL;
+	data->window = NULL;
 	data->map.map = NULL;
 	data->map.map_cpy = 0;
 	data->map.c_count = 0;
@@ -37,8 +34,11 @@ int	main(int argc, char **argv)
 		exit_error("Error", &data, NULL, -1);
 	read_map(argv[1], &data);
 	check_characters(&data);
+	printf("wow\n");
 	check_walls(&data);
 	is_solvable(&data);
+	printf("ah\n");
+	data_init(&data);
 	free_ar((void **)data.map.map_cpy);
 	free_ar((void **)data.map.map);
 }
