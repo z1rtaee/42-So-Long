@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 17:13:29 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/10 22:37:38 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:00:21 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ int	main(int argc, char **argv)
 		exit_error("Error", &data, NULL, -1);
 	read_map(argv[1], &data);
 	check_characters(&data);
-	printf("wow\n");
 	check_walls(&data);
 	is_solvable(&data);
-	printf("ah\n");
 	data_init(&data);
 	free_ar((void **)data.map.map_cpy);
 	free_ar((void **)data.map.map);

@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 00:40:29 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/08 19:42:18 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/14 22:28:05 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,11 @@ void	count_characters(t_solong *data, int *p, int *e, int *c)
 		{
 			if (data->map.map[x][y] == 'P')
 			{
-				data->player.pos_x = x;
-				data->player.pos_y = y;
-				printf("player's x-axis position -> %i\n player's y-axis position -> %i\n", data->player.pos_x, data->player.pos_y);
+				data->player.pos_x = x * 64;
+				data->player.pos_y = y * 64;
+				data->player.farthest_x = data->player.pos_x + 64;
+				data->player.farthest_y = data->player.pos_y + 64;
+				//printf("player's x-axis position -> %i\n player's y-axis position -> %i\n", data->player.pos_x, data->player.pos_y);
 				(*p)++;
 			}
 			else if (data->map.map[x][y] == 'E')

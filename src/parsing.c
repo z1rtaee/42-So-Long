@@ -98,7 +98,7 @@ void	is_solvable(t_solong *data)
 	x = 0;
 	y = 0;
 	cpy_map(&data->map);
-	flood_fill(data->map.map_cpy, data->player.pos_x, data->player.pos_y);
+	flood_fill(data->map.map_cpy, data->player.pos_x / 64, data->player.pos_y / 64);
 	x = 0;
 	while (data->map.map_cpy[x])
 	{

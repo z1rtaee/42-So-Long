@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 17:21:25 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/08 20:02:43 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/12 16:49:36 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,11 @@ void	exit_error(char *error_message, t_solong *data, char *str, int fd)
 	if (fd > -1)
 		close(fd);
 	ft_putendl_fd(error_message, 2);
-	exit(1);
+	exit(EXIT_FAILURE);
+}
+
+void	exit_game(char *end_game)
+{
+	ft_putendl_fd(end_game, 1);
+	exit(EXIT_SUCCESS);
 }

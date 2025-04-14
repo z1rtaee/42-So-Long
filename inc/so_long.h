@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:11:52 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/12 01:39:10 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/14 22:31:53 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
+# define PLAYER_SPEED 64
 
 typedef struct s_c4_tiles
 {
@@ -94,12 +95,16 @@ typedef struct s_player
 {
 	int	pos_y;
 	int	pos_x;
+	int farthest_x;
+	int farthest_y;
 }				t_player;
 
 typedef struct s_solong
 {
 	void		*mlx;
 	void		*window;
+	int			view_x;
+	int			view_y;
 	t_img		final_screen;
 	t_tiles		tile_frame;
 	t_map		map;
@@ -143,5 +148,17 @@ void		get_adr_collectibles(t_solong *data);
 void		pixel_put(t_img *img, int x, int y, int color);
 
 void		put_img_to_screen(t_img *screen, t_img img, int screen_x, int screen_y);
+
+int 		key_handle(int keycode, t_solong *data);
+
+void		handle_scroll(t_solong *data);
+
+void		exit_game(char *end_game);
+
+void		adjust_view(t_solong *data);
+
+void		update_map(t_solong *data, int key_pressed);
+
+int			check_collision(t_solong *data, int key_pressed);
 
 #endif
