@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:11:52 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/14 22:31:53 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/18 22:16:35 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define PLAYER_SPEED 64
+# define PLAYER_SPEED 20
 
 typedef struct s_c4_tiles
 {
@@ -99,6 +99,14 @@ typedef struct s_player
 	int farthest_y;
 }				t_player;
 
+typedef struct s_keys
+{
+	int w;
+	int a;
+	int s;
+	int d;
+}				t_keys;
+
 typedef struct s_solong
 {
 	void		*mlx;
@@ -106,16 +114,16 @@ typedef struct s_solong
 	int			view_x;
 	int			view_y;
 	t_img		final_screen;
+	t_img		frame_buffer;
 	t_tiles		tile_frame;
 	t_map		map;
 	t_player	player;
+	t_keys		keys;
 }			t_solong;
 
 bool		check_map_name(char *map);
 
 void		create_map(char *map, int rows, t_solong *data);
-
-void		alloc_rows(t_solong *data, int fd);
 
 void		read_map(char *map, t_solong *data);
 
@@ -143,6 +151,8 @@ void		load_collectibles(t_solong *data);
 
 void		draw_tiles(t_solong *data);
 
+void		draw_rendered(t_solong *data);
+
 void		get_adr_collectibles(t_solong *data);
 
 void		pixel_put(t_img *img, int x, int y, int color);
@@ -153,12 +163,24 @@ int 		key_handle(int keycode, t_solong *data);
 
 void		handle_scroll(t_solong *data);
 
-void		exit_game(char *end_game);
+void		exit_game(char *end_game, t_solong *data);
 
 void		adjust_view(t_solong *data);
 
 void		update_map(t_solong *data, int key_pressed);
 
 int			check_collision(t_solong *data, int key_pressed);
+
+int			x_window(t_solong *data);
+
+int			render_game(t_solong *data);
+
+void		game_start(t_solong *data);
+
+int			key_pressed(int keycode, t_solong *data);
+
+int			key_released(int keycode, t_solong *data);
+
+void		player_movement(t_solong *data);
 
 #endif

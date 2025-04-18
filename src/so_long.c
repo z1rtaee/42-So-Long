@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 17:13:29 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/12 15:00:21 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/17 20:22:05 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,13 @@ void	init_so_long(t_solong *data)
 	data->map.map = NULL;
 	data->map.map_cpy = 0;
 	data->map.c_count = 0;
+	data->map.c_collected = 0;
 	data->map.row_count = 0;
 	data->map.col_count = 0;
+	data->keys.w = 0;
+	data->keys.a = 0;
+	data->keys.s = 0;
+	data->keys.d = 0;
 }
 
 int	main(int argc, char **argv)
@@ -37,6 +42,5 @@ int	main(int argc, char **argv)
 	check_walls(&data);
 	is_solvable(&data);
 	data_init(&data);
-	free_ar((void **)data.map.map_cpy);
-	free_ar((void **)data.map.map);
+	game_start(&data);
 }
