@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 17:13:29 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/17 20:22:05 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/19 22:27:16 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ void	init_so_long(t_solong *data)
 	data->keys.a = 0;
 	data->keys.s = 0;
 	data->keys.d = 0;
+	data->menu_choice = 0;
+	data->player_choice = 0;
+	data->status = MENU;
 }
 
 int	main(int argc, char **argv)

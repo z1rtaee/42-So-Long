@@ -71,3 +71,68 @@ else if (data->map.map[x][y] == 'C')
 // 	}
 // 	return (0);
 // }
+
+// ——— MENU INPUT ———————————————————————————————————————————————
+static int handle_menu_input(int key, t_solong *d)
+{
+    if (key == XK_Up || key == XK_w || key == XK_Down || key == XK_s)
+        d->menu_choice = 1 - d->menu_choice;  // toggle between 0 and 1
+    else if (key == XK_Return)
+    {
+        if (d->menu_choice == 0)
+            d->status = PLAYER_SELECT;
+        else
+            d->status = CREDITS;
+    }
+    else if (key == XK_Escape)
+        exit_game("Goodbye!", d);
+    return (0);
+}
+
+// ——— CREDITS INPUT ————————————————————————————————————————————
+static int handle_credits_input(int key, t_solong *d)
+{
+    if (key == XK_Escape || key == XK_Return)
+        d->status = MENU;
+    return (0);
+}
+
+// ——— PLAYER‑SELECT INPUT ———————————————————————————————————————
+static int handle_select_input(int key, t_solong *d)
+{
+    const int N = /* number of choices */;
+    if (key == XK_Left || key == XK_a)
+        d->select_choice = (d->select_choice + N - 1) % N;
+    else if (key == XK_Right || key == XK_d)
+        d->select_choice = (d->select_choice + 1) % N;
+    else if (key == XK_Return)
+        d->status = GAME;
+    else if (key == XK_Escape)
+        d->status = MENU;
+    return (0);
+}
+
+// ——— GAMEPLAY INPUT ————————————————————————————————————————
+static int handle_game_input(int key, t_solong *d)
+{
+    if (key == XK_Escape)
+        exit_game("Thanks for playing!", d);
+    if (key == XK_Up    || key == XK_w) d->keys.w = 1;
+    if (key == XK_Left  || key == XK_a) d->keys.a = 1;
+    if (key == XK_Down  || key == XK_s) d->keys.s = 1;
+    if (key == XK_Right || key == XK_d) d->keys.d = 1;
+    return (0);
+}
+
+// ——— MAIN DISPATCHER ————————————————————————————————————————
+int key_pressed(int keycode, t_solong *data)
+{
+    switch (data->status)
+    {
+        case MENU:           return handle_menu_input(  keycode, data);
+        case CREDITS:        return handle_credits_input(keycode, data);
+        case PLAYER_SELECT:  return handle_select_input(keycode, data);
+        case GAME:           return handle_game_input(  keycode, data);
+    }
+    return (0);
+}

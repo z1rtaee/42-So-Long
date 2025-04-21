@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 20:22:30 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/18 21:32:16 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/19 19:52:00 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,42 +37,4 @@ void	game_start(t_solong *data)
 	mlx_hook(data->window, 17, 0, x_window, data);
 	mlx_loop_hook(data->mlx, render_game, data);
 	mlx_loop(data->mlx);
-}
-
-int	render_game(t_solong *data)
-{
-	player_movement(data);
-	adjust_view(data);
-	draw_tiles(data);
-	mlx_clear_window(data->mlx, data->window);
-	mlx_put_image_to_window(data->mlx, data->window, data->final_screen.image, -data->view_y, -data->view_x);
-	return (0);
-}
-
-void	player_movement(t_solong *data)
-{
-	if (data->keys.w && !check_collision(data, XK_Up))
-	{
-		data->player.pos_x -= PLAYER_SPEED;
-		data->player.farthest_x -= PLAYER_SPEED;
-		update_map(data, XK_Up);
-	}
-	if (data->keys.a && !check_collision(data, XK_Left))
-	{
-		data->player.pos_y -= PLAYER_SPEED;
-		data->player.farthest_y -= PLAYER_SPEED;
-		update_map(data, XK_Up);
-	}
-	if (data->keys.s && !check_collision(data, XK_Down))
-	{
-		data->player.pos_x += PLAYER_SPEED;
-		data->player.farthest_x += PLAYER_SPEED;
-		update_map(data, XK_Down);
-	}
-	if (data->keys.d && !check_collision(data, XK_Right))
-	{
-		data->player.pos_y += PLAYER_SPEED;
-		data->player.farthest_y += PLAYER_SPEED;
-		update_map(data, XK_Right);
-	}
 }

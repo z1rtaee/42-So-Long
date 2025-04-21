@@ -6,40 +6,11 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 15:24:12 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/18 22:29:13 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/19 19:52:26 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-
-int	key_released(int keycode, t_solong *data)
-{
-	if (keycode == XK_Up || keycode == XK_w)
-		data->keys.w = 0;
-	if (keycode == XK_Left || keycode == XK_a)
-		data->keys.a = 0;
-	if (keycode == XK_Down || keycode == XK_s)
-		data->keys.s = 0;
-	if (keycode == XK_Right || keycode == XK_d)
-		data->keys.d = 0;
-	return (0);
-}
-
-int	key_pressed(int keycode, t_solong *data)
-{
-	if (keycode == XK_Escape)
-		exit_game("Thank you for playing!", data);
-	if (keycode == XK_Up || keycode == XK_w)
-		data->keys.w = 1;
-	if (keycode == XK_Left || keycode == XK_a)
-		data->keys.a = 1;
-	if (keycode == XK_Down || keycode == XK_s)
-		data->keys.s = 1;
-	if (keycode == XK_Right || keycode == XK_d)
-		data->keys.d = 1;
-	return (0);
-}
 
 void	handle_scroll(t_solong *data)
 {
@@ -111,4 +82,33 @@ int	check_collision(t_solong *data, int key_pressed)
 	else if (key_pressed == XK_Down || key_pressed == XK_s)
 		return (data->map.map[(data->player.farthest_x + PLAYER_SPEED) / 64][data->player.pos_y / 64] == '1' || data->map.map[(data->player.farthest_x + PLAYER_SPEED) / 64][data->player.farthest_y / 64] == '1');
 	return (0);
+}
+
+
+void	player_movement(t_solong *data)
+{
+	if (data->keys.w && !check_collision(data, XK_Up))
+	{
+		data->player.pos_x -= PLAYER_SPEED;
+		data->player.farthest_x -= PLAYER_SPEED;
+		update_map(data, XK_Up);
+	}
+	if (data->keys.a && !check_collision(data, XK_Left))
+	{
+		data->player.pos_y -= PLAYER_SPEED;
+		data->player.farthest_y -= PLAYER_SPEED;
+		update_map(data, XK_Up);
+	}
+	if (data->keys.s && !check_collision(data, XK_Down))
+	{
+		data->player.pos_x += PLAYER_SPEED;
+		data->player.farthest_x += PLAYER_SPEED;
+		update_map(data, XK_Down);
+	}
+	if (data->keys.d && !check_collision(data, XK_Right))
+	{
+		data->player.pos_y += PLAYER_SPEED;
+		data->player.farthest_y += PLAYER_SPEED;
+		update_map(data, XK_Right);
+	}
 }

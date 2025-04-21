@@ -12,7 +12,8 @@ CFLAGS			= -Wall -Wextra -Werror -g
 
 SRC_DIR			= src/
 SRCS	 		= $(SRC_DIR)so_long.c $(SRC_DIR)parsing.c $(SRC_DIR)exit_game.c $(SRC_DIR)map_utils.c \
-				  $(SRC_DIR)draw_screen.c $(SRC_DIR)load_images.c $(SRC_DIR)moves.c $(SRC_DIR)game_start.c
+				  $(SRC_DIR)draw_screen.c $(SRC_DIR)load_images.c $(SRC_DIR)moves.c $(SRC_DIR)game_start.c \
+				  $(SRC_DIR)render.c $(SRC_DIR)keys.c
 
 OBJS 			= $(SRCS:%.c=%.o)
 

@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:11:52 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/18 22:16:35 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/19 23:37:11 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,23 @@ typedef struct s_keys
 	int d;
 }				t_keys;
 
+typedef enum e_status
+{
+	MENU,
+	PLAYER_SELECT,
+	GAME,
+	CREDITS,
+}				t_status;
+
 typedef struct s_solong
 {
 	void		*mlx;
 	void		*window;
 	int			view_x;
 	int			view_y;
+	int			menu_choice; // 0 = Play, 1 = Credits
+	int			player_choice; // 0 = Bea 1 = Fanta
+	t_status	status;
 	t_img		final_screen;
 	t_img		frame_buffer;
 	t_tiles		tile_frame;
@@ -173,7 +184,13 @@ int			check_collision(t_solong *data, int key_pressed);
 
 int			x_window(t_solong *data);
 
+void	    render_gameplay(t_solong *data);
+
 int			render_game(t_solong *data);
+
+void    	render_menu(t_solong *data);
+
+void		render_p_select(t_solong *data);
 
 void		game_start(t_solong *data);
 
@@ -182,5 +199,11 @@ int			key_pressed(int keycode, t_solong *data);
 int			key_released(int keycode, t_solong *data);
 
 void		player_movement(t_solong *data);
+
+int			handle_game_input(int keycode, t_solong *data);
+
+int			handle_menu_input(int keycode, t_solong *data);
+
+int			handle_p_select_input(int keycode, t_solong *data);
 
 #endif
