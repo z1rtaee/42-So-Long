@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:41:11 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/15 21:07:01 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/22 01:32:22 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,16 @@ void	get_adr_collectibles(t_solong *data)
 //	data->tile_frame.c4.frame_2.data = mlx_get_data_addr(data->tile_frame.c4.frame_2.image, &data->tile_frame.c4.frame_2.bpp, &data->tile_frame.c4.frame_2.size_line, &data->tile_frame.c4.frame_2.type);
 //	data->tile_frame.c4.frame_3.data = mlx_get_data_addr(data->tile_frame.c4.frame_3.image, &data->tile_frame.c4.frame_3.bpp, &data->tile_frame.c4.frame_3.size_line, &data->tile_frame.c4.frame_3.type);
 //	data->tile_frame.c4.frame_4.data = mlx_get_data_addr(data->tile_frame.c4.frame_4.image, &data->tile_frame.c4.frame_4.bpp, &data->tile_frame.c4.frame_4.size_line, &data->tile_frame.c4.frame_4.type);
+}
+
+void	load_menu_select(t_solong *data)
+{
+	data->menu.credits_menu.image = mlx_xpm_file_to_image(data->mlx, "textures/credits_menu.xpm", &data->menu.credits_menu.width, &data->menu.credits_menu.height);
+	data->menu.play_menu.image = mlx_xpm_file_to_image(data->mlx, "textures/play_menu.xpm", &data->menu.play_menu.width, &data->menu.play_menu.height);
+	data->menu.credits_menu.data = mlx_get_data_addr(data->menu.credits_menu.image, &data->menu.credits_menu.bpp, &data->menu.credits_menu.size_line, &data->menu.credits_menu.type);
+	data->menu.play_menu.data = mlx_get_data_addr(data->menu.play_menu.image, &data->menu.play_menu.bpp, &data->menu.play_menu.size_line, &data->menu.play_menu.type);
+	data->menu.p_select_0.image = mlx_xpm_file_to_image(data->mlx, "textures/p_select_0.xpm", &data->menu.p_select_0.width, &data->menu.p_select_0.height);
+	data->menu.p_select_1.image = mlx_xpm_file_to_image(data->mlx, "textures/p_select_1.xpm", &data->menu.p_select_1.width, &data->menu.p_select_1.height);
+	data->menu.p_select_0.data = mlx_get_data_addr(data->menu.p_select_0.image, &data->menu.p_select_0.bpp, &data->menu.p_select_0.size_line, &data->menu.p_select_0.type);
+	data->menu.p_select_1.data = mlx_get_data_addr(data->menu.p_select_1.image, &data->menu.p_select_1.bpp, &data->menu.p_select_1.size_line, &data->menu.p_select_1.type);
 }

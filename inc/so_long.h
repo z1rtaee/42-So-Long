@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:11:52 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/19 23:37:11 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/22 01:18:08 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,37 +23,13 @@
 # define HEIGHT 1080
 # define PLAYER_SPEED 20
 
-typedef struct s_c4_tiles
+typedef struct s_c_tiles
 {
 	t_img	frame_1;
 	t_img	frame_2;
 	t_img	frame_3;
 	t_img	frame_4;
-}				t_c4_tiles;
-
-typedef struct s_c3_tiles
-{
-	t_img	frame_1;
-	t_img	frame_2;
-	t_img	frame_3;
-	t_img	frame_4;
-}				t_c3_tiles;
-
-typedef struct s_c2_tiles
-{
-	t_img	frame_1;
-	t_img	frame_2;
-	t_img	frame_3;
-	t_img	frame_4;
-}				t_c2_tiles;
-
-typedef struct s_c1_tiles
-{
-	t_img	frame_1;
-	t_img	frame_2;
-	t_img	frame_3;
-	t_img	frame_4;
-}				t_c1_tiles;
+}				t_c_tiles;
 
 typedef struct s_player_tiles
 {
@@ -71,10 +47,10 @@ typedef struct s_player_tiles
 typedef struct s_tiles
 {
 	t_player_tiles 	player;
-	t_c1_tiles		c1;
-	t_c2_tiles		c2;
-	t_c3_tiles		c3;
-	t_c4_tiles		c4;
+	t_c_tiles		c1;
+	t_c_tiles		c2;
+	t_c_tiles		c3;
+	t_c_tiles		c4;
 	t_img			open_e;
 	t_img			closed_e;
 	t_img			wall;
@@ -107,6 +83,15 @@ typedef struct s_keys
 	int d;
 }				t_keys;
 
+typedef struct s_menu
+{
+	t_img	menu;
+	t_img	credits_menu;
+	t_img	play_menu;
+	t_img	p_select_0;
+	t_img	p_select_1;
+}				t_menu;
+
 typedef enum e_status
 {
 	MENU,
@@ -130,6 +115,7 @@ typedef struct s_solong
 	t_map		map;
 	t_player	player;
 	t_keys		keys;
+	t_menu		menu;
 }			t_solong;
 
 bool		check_map_name(char *map);
@@ -159,6 +145,8 @@ void		load_player(t_solong *data);
 void		load_map(t_solong *data);
 
 void		load_collectibles(t_solong *data);
+
+void		load_menu_select(t_solong *data);
 
 void		draw_tiles(t_solong *data);
 
