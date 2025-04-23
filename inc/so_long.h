@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:11:52 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/23 17:07:27 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 18:40:11 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define PLAYER_SPEED 1
-# define FI_MS 125
+# define PLAYER_SPEED 4
 # define FPS 60
+# define FRAME_TIME 2
 
 typedef struct s_player_tiles
 {
@@ -188,5 +188,7 @@ int			handle_game_input(int keycode, t_solong *data);
 int			handle_menu_input(int keycode, t_solong *data);
 
 int			handle_p_select_input(int keycode, t_solong *data);
+
+double		get_delta_time(void);
 
 #endif

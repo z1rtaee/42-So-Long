@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 19:21:19 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/23 01:00:26 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 18:38:33 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,22 @@
 int	render_game(t_solong *data)
 {
 	char	*moves;
+	static	double	time;
 	
-	moves = ft_itoa(data->player.move_count);
-	if (data->status == MENU)
-		render_menu(data);
-	else if (data->status == PLAYER_SELECT)
-		render_p_select(data);
-	else if (data->status == GAME){
-		render_gameplay(data);
-		mlx_string_put(data->mlx, data->window, 20, 1000, 0xFFFFFF, moves);
-		free(moves);
+	time += get_delta_time();
+	if (time >= 1.0 / FPS)
+	{
+		moves = ft_itoa(data->player.move_count);
+		if (data->status == MENU)
+			render_menu(data);
+		else if (data->status == PLAYER_SELECT)
+			render_p_select(data);
+		else if (data->status == GAME){
+			render_gameplay(data);
+			mlx_string_put(data->mlx, data->window, 10, 1000, 0xFFFFFF, moves);
+			free(moves);
+			}
+		time = 0;
 	}
 //	else if (data->status == CREDITS)
 //		render_credits(data);
@@ -58,11 +64,9 @@ void    render_gameplay(t_solong *data)
 {
 	player_movement(data);
 	adjust_view(data);
-	//update__anim
 	draw_tiles(data);
 	mlx_clear_window(data->mlx, data->window);
 	mlx_put_image_to_window(data->mlx, data->window, data->final_screen.image, -data->view_y, -data->view_x);
-	//PICK AND DRAW CORRECT FRAME
 }
 
 //void    render_credits(t_solong *data)

@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 15:24:12 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/23 17:05:04 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 18:42:07 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,6 @@ void	player_movement(t_solong *data)
 	}
 	if (data->keys.w || data->keys.a || data->keys.s || data->keys.d)
 		data->frame++;
-	if (data->frame > 2)
+	if (data->frame * FRAME_TIME > FPS)
 		data->frame = 0;
 }

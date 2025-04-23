@@ -58,12 +58,11 @@ void	check_characters(t_solong *data)
 	e = 0;
 	count_characters(data, &p, &e, &data->map.c_count);
 	if (p != 1)
-		exit_error("Error: Map must contain exactly one player (P).", data, NULL, -1);
+		exit_error("Error", data, NULL, -1);
 	if (e != 1)
-		exit_error("Error: Map must contain exactly one exit (E).", data, NULL, -1);
+		exit_error("Error", data, NULL, -1);
 	if (data->map.c_count < 1)
-		exit_error("Error: Map must contain at least one collectible (C).",
-			data, NULL, -1);
+		exit_error("Error", data, NULL, -1);
 }
 
 void	check_walls(t_solong *data)
@@ -78,14 +77,14 @@ void	check_walls(t_solong *data)
 	{
 		if (data->map.map[0][y] != '1' 
 			   || data->map.map[data->map.row_count - 1][y] != '1')
-			exit_error("row is not closed.", data, NULL, -1);
+			exit_error("Error", data, NULL, -1);
 		y++;
 	}
 	while (x < data->map.row_count)
 	{
 		if (data->map.map[x][0] != '1' 
 			   || data->map.map[x][data->map.col_count - 1] != '1')
-			exit_error("collumn is not closed.", data, NULL, -1);
+			exit_error("Error", data, NULL, -1);
 		x++;
 	}
 }
@@ -105,7 +104,7 @@ void	is_solvable(t_solong *data)
 		y = 0;
 		while (data->map.map_cpy[x][y])
 		{
-			if (data->map.map_cpy[x][y] != '1' && data->map.map_cpy[x][y] != 'F')
+			if (data->map.map_cpy[x][y] != '1' && data->map.map_cpy[x][y] != 'F' && data->map.map_cpy[x][y] == 'E')
 				exit_error("Map is not solvable", data, NULL, -1);
 			y++;
 		}
