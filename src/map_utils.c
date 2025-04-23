@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 00:40:29 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/23 01:26:47 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:35:23 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	count_characters(t_solong *data, int *p, int *e, int *c)
 
 void	flood_fill(char **map, int x, int y)
 {
-	if (map[x][y] == '1')
+	if (map[x][y] == '1' || map[x][y] == 'F')
 		return ;
 	map[x][y] = '1';
 	flood_fill(map, x + 1, y);

@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:45:56 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/23 01:27:52 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:00:10 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,12 @@ void	draw_tiles(t_solong *data)
 				put_img_to_screen(&data->final_screen, data->tile_frame.c1[0], x * 64, y * 64);
 			}
 			else if (data->map.map[x][y] == 'F')
+			{
+				put_img_to_screen(&data->final_screen, data->tile_frame.floor, x * 64, y * 64);
 				put_img_to_screen(&data->final_screen, data->tile_frame.enemy, x * 64, y * 64);
-			//else if (data->map.map[x][y] == 'E')
-				//put_img_to_screen(&data->final_screen, data->tile_frame.closed_e, x * 64, y * 64);
+			}
+			else if (data->map.map[x][y] == 'E')
+				put_img_to_screen(&data->final_screen, data->tile_frame.exit, x * 64, y * 64);
 			if (data->player_choice == 0)
 				draw_player_0(data);
 			else if (data->player_choice == 1)

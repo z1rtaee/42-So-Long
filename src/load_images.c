@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:41:11 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/23 01:25:23 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:59:47 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,14 @@ void	load_player_0(t_solong *data)
 
 void	load_map(t_solong *data)
 {
-	data->tile_frame.wall.image = mlx_xpm_file_to_image(data->mlx, "textures/wall.xpm", &data->tile_frame.wall.width, &data->tile_frame.wall.height);
-    data->tile_frame.floor.image = mlx_xpm_file_to_image(data->mlx, "textures/floor.xpm", &data->tile_frame.floor.width, &data->tile_frame.floor.height);
-	//data->tile_frame.open_e.image = mlx_xpm_file_to_image(data->mlx, "textures/open_e.xpm", &data->tile_frame.open_e.width, &data->tile_frame.open_e.height);
-	//data->tile_frame.closed_e.image =mlx_xpm_file_to_image(data->mlx, "textures/l_walk_1.xpm", &data->tile_frame.closed_e.width, &data->tile_frame.closed_e.height);
-	data->tile_frame.wall.data = mlx_get_data_addr(data->tile_frame.wall.image, &data->tile_frame.wall.bpp, &data->tile_frame.wall.size_line, &data->tile_frame.wall.type);
+	data->tile_frame.floor.image = mlx_xpm_file_to_image(data->mlx, "textures/floor.xpm", &data->tile_frame.floor.width, &data->tile_frame.floor.height);
 	data->tile_frame.floor.data = mlx_get_data_addr(data->tile_frame.floor.image, &data->tile_frame.floor.bpp, &data->tile_frame.floor.size_line, &data->tile_frame.floor.type);
-	//data->tile_frame.open_e.data = mlx_get_data_addr(data->tile_frame.open_e.image, &data->tile_frame.open_e.bpp, &data->tile_frame.open_e.size_line, &data->tile_frame.open_e.type);
-	//data->tile_frame.closed_e.data = mlx_get_data_addr(data->tile_frame.closed_e.image, &data->tile_frame.closed_e.bpp, &data->tile_frame.closed_e.size_line, &data->tile_frame.closed_e.type);
+	data->tile_frame.wall.image = mlx_xpm_file_to_image(data->mlx, "textures/wall.xpm", &data->tile_frame.wall.width, &data->tile_frame.wall.height);
+	data->tile_frame.wall.data = mlx_get_data_addr(data->tile_frame.wall.image, &data->tile_frame.wall.bpp, &data->tile_frame.wall.size_line, &data->tile_frame.wall.type);
 	data->tile_frame.enemy.image = mlx_xpm_file_to_image(data->mlx, "textures/enemy.xpm", &data->tile_frame.enemy.width, &data->tile_frame.enemy.height);
 	data->tile_frame.enemy.data = mlx_get_data_addr(data->tile_frame.enemy.image, &data->tile_frame.enemy.bpp, &data->tile_frame.enemy.size_line, &data->tile_frame.enemy.type);
+	data->tile_frame.exit.image = mlx_xpm_file_to_image(data->mlx, "textures/exit.xpm", &data->tile_frame.exit.width, &data->tile_frame.exit.height);
+	data->tile_frame.exit.data = mlx_get_data_addr(data->tile_frame.exit.image, &data->tile_frame.exit.bpp, &data->tile_frame.exit.size_line, &data->tile_frame.exit.type);
 }
 
 void	load_collectibles(t_solong *data)

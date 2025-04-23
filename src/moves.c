@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 15:24:12 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/23 01:31:38 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:05:04 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ void	update_map(t_solong *data)
 	if (data->map.map[(data->player.pos_x + 32) / 64][(data->player.pos_y + 32) / 64] == 'F')
 		exit_game("You Lose! :p", data);
 	if (data->map.map[(data->player.pos_x + 32) / 64][(data->player.pos_y + 32) / 64] == 'C')
+	{
 		data->map.c_collected++;
+		printf("baddie collected : %i\n", data->map.c_collected);
+	}
 	data->map.map[(data->player.pos_x + 32) / 64][(data->player.pos_y + 32) / 64] = 'P';
 }
 

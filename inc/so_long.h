@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:11:52 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/23 01:24:25 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:07:27 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define PLAYER_SPEED 5
+# define PLAYER_SPEED 1
 # define FI_MS 125
 # define FPS 60
 

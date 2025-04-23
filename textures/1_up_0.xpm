@@ -1,5 +1,5 @@
 /* XPM */
-static char *rcp25082476164434588[] = {
+static const char *__up_0[] = {
 /* columns rows colors chars-per-pixel */
 "32 64 11 1 ",
 "  c black",
@@ -12,7 +12,7 @@ static char *rcp25082476164434588[] = {
 "# c #D4B688",
 "$ c #D89DA7",
 "% c #FCEAE0",
-"& c white",
+"& c None",
 /* pixels */
 "&&&&&&&&&&           &&&&&&&&&&&",
 "&&&&&&&&&  X XX   ooo &&&&&&&&&&",

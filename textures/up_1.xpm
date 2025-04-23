@@ -1,5 +1,5 @@
 /* XPM */
-static char *rcp36081760155409808[] = {
+static const char *up_1[] = {
 /* columns rows colors chars-per-pixel */
 "32 64 6 1 ",
 "  c black",
@@ -7,7 +7,7 @@ static char *rcp36081760155409808[] = {
 "X c gray81",
 "o c #FCEAE0",
 "O c #FEFFFF",
-"+ c white",
+"+ c None",
 /* pixels */
 "++++++++++           +++++++++++",
 "+++++++++             ++++++++++",
@@ -40,14 +40,14 @@ static char *rcp36081760155409808[] = {
 "++++ ...... ... .... ... ... +++",
 "+++++ . .... .. .... ... .. ++++",
 "+++++     .                +++++",
-"+++++ ++XX +++++++++++ +++ +++++",
-"++++ +++X ++++++++++++ X+++ ++++",
-"++++      ++++++++++++      ++++",
-"+++++ ooo ++++++++++++ ooo +++++",
-"+++++ ooo ++++++++++++ ooo +++++",
-"+++++ ooo ++++++++++++ ooo +++++",
-"+++++ ooo ++++++++++++ ooo +++++",
-"+++++ ooo  ++++++++++  ooo +++++",
+"+++++ OOXX OOOOOOOOOOO OOO +++++",
+"++++ OOOX OOOOOOOOOOOO XOOO ++++",
+"++++      OOOOOOOOOOOO      ++++",
+"+++++ ooo OOOOOOOOOOOO ooo +++++",
+"+++++ ooo OOOOOOOOOOOO ooo +++++",
+"+++++ ooo OOOOOOOOOOOO ooo +++++",
+"+++++ ooo OOOOOOOOOOOO ooo +++++",
+"+++++ ooo  OOOOOOOOOO  ooo +++++",
 "+++++ ooo o          o ooo +++++",
 "+++++ oo oooooooooooooo oo +++++",
 "+++++    oooooooooooooo    +++++",

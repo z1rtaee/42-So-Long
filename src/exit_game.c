@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 17:21:25 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/22 23:25:04 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:28:47 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,12 @@ void	free_all(t_solong *data, char *str)
 
 void	exit_error(char *error_message, t_solong *data, char *str, int fd)
 {
-	free_all(data, str);
+	if (str)
+		free(str);
+	if (data->map.map)
+		free_ar((void **)data->map.map);
+	if (data->map.map_cpy)
+		free_ar((void **)data->map.map_cpy);
 	if (fd > -1)
 		close(fd);
 	ft_putendl_fd(error_message, 2);
