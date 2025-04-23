@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 19:51:00 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/19 23:35:29 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 01:01:14 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ int	handle_game_input(int keycode, t_solong *data)
 		data->keys.s = 1;
 	if (keycode == XK_Right || keycode == XK_d)
 		data->keys.d = 1;
+	//if (keycode == XK_Up || keycode == XK_w || keycode == XK_Left || keycode == XK_a || keycode == XK_Right || keycode == XK_d || keycode == XK_Down || keycode == XK_s)
+	//	data->frame++;
+	//if (data->frame > 2)
+	//	data->frame = 0;
 	return (0);
 }
 
@@ -72,14 +76,14 @@ int	handle_menu_input(int keycode, t_solong *data)
 
 int	handle_p_select_input(int keycode, t_solong *data)
 {
-	printf("player choice -> %d\n", data->player_choice);
-	if (keycode == XK_Left)
+	if (keycode == XK_Right)
 		data->player_choice = 0;
-	else if (keycode == XK_Right)
+	else if (keycode == XK_Left)
 		data->player_choice = 1;
 	else if (keycode == XK_Return)
 		data->status = GAME;
 	else if (keycode == XK_Escape)
 		data->status = MENU;
+	printf("player choice -> %d\n", data->player_choice);
 	return (0);
 }

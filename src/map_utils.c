@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 00:40:29 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/18 22:15:08 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 01:26:47 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	count_characters(t_solong *data, int *p, int *e, int *c)
 				(*e)++;
 			else if (data->map.map[x][y] == 'C')
 				(*c)++;
-			else if (data->map.map[x][y] != '0' && data->map.map[x][y] != '1' && data->map.map[x][y] != '\n')
+			else if (data->map.map[x][y] != '0' && data->map.map[x][y] != '1' && data->map.map[x][y] != 'F' && data->map.map[x][y] != '\n')
 				exit_error("Error: Invalid character in map.", data, NULL, -1);
 			y++;
 		}

@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 15:24:12 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/19 19:52:26 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 01:31:38 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,33 +42,29 @@ void	adjust_view(t_solong *data)
 	handle_scroll(data);
 }
 
-void	update_map(t_solong *data, int key_pressed)
+void	update_map(t_solong *data)
 {
-	if (data->map.map[data->player.pos_x / 64][data->player.pos_y / 64] == 'E')
+	if (data->map.map[(data->player.pos_x + 32) / 64][(data->player.pos_y + 32) / 64] == 'E')
 		if (data->map.c_collected == data->map.c_count)
-		{
-			printf("pls\n");
 			exit_game("You win! :p", data);
-		}
+	if (data->map.map[(data->player.pos_x + 32) / 64][(data->player.pos_y + 32) / 64] == 'F')
+		exit_game("You Lose! :p", data);
 	if (data->map.map[(data->player.pos_x + 32) / 64][(data->player.pos_y + 32) / 64] == 'C')
-	{
 		data->map.c_collected++;
-		printf("baddie nr %d collected\n", data->map.c_collected);
-		data->map.map[(data->player.pos_x + 32) / 64][(data->player.pos_y + 32) / 64] = '0';
-	}
-	data->map.map[data->player.pos_x / 64][data->player.pos_y / 64] = 'P';
-	if ((key_pressed == XK_Left || key_pressed == XK_a)
-		&& data->map.map[data->player.pos_x / 64][(data->player.pos_y + PLAYER_SPEED) / 64] != '1')
-		data->map.map[data->player.pos_x / 64][(data->player.pos_y + PLAYER_SPEED) / 64] = '0';
-	else if ((key_pressed == XK_Right || key_pressed == XK_d)
-		&& data->map.map[data->player.pos_x / 64][(data->player.pos_y - PLAYER_SPEED) / 64] != '1')
-		data->map.map[data->player.pos_x / 64][(data->player.pos_y - PLAYER_SPEED) / 64] = '0';
-	else if ((key_pressed == XK_Up || key_pressed == XK_w)
-		&& data->map.map[(data->player.pos_x + PLAYER_SPEED) / 64][data->player.pos_y / 64] != '1')
-		data->map.map[(data->player.pos_x + PLAYER_SPEED) / 64][data->player.pos_y / 64] = '0';
-	else if ((key_pressed == XK_Down || key_pressed == XK_s)
-		&& data->map.map[(data->player.pos_x - PLAYER_SPEED) / 64][data->player.pos_y / 64] != '1')
-		data->map.map[(data->player.pos_x - PLAYER_SPEED) / 64][data->player.pos_y / 64] = '0';
+	data->map.map[(data->player.pos_x + 32) / 64][(data->player.pos_y + 32) / 64] = 'P';
+}
+
+int	check_exit_collision(t_solong *data, int key_pressed)
+{
+	if ((key_pressed == XK_Left || key_pressed == XK_a) && data->map.c_collected != data->map.c_count)
+		return (data->map.map[data->player.pos_x / 64][(data->player.pos_y - PLAYER_SPEED) / 64] == 'E' || data->map.map[data->player.farthest_x / 64][(data->player.pos_y - PLAYER_SPEED) / 64] == 'E');
+	else if ((key_pressed == XK_Right || key_pressed == XK_d) && data->map.c_collected != data->map.c_count)
+		return (data->map.map[data->player.pos_x / 64][(data->player.farthest_y + PLAYER_SPEED) / 64] == 'E' || data->map.map[data->player.farthest_x / 64][(data->player.farthest_y + PLAYER_SPEED) / 64] == 'E');
+	else if ((key_pressed == XK_Up || key_pressed == XK_w) && data->map.c_collected != data->map.c_count)
+		return (data->map.map[(data->player.pos_x - PLAYER_SPEED) / 64][data->player.pos_y / 64] == 'E' || data->map.map[(data->player.pos_x - PLAYER_SPEED) / 64][data->player.farthest_y / 64] == 'E');
+	else if ((key_pressed == XK_Down || key_pressed == XK_s) && data->map.c_collected != data->map.c_count)
+		return (data->map.map[(data->player.farthest_x + PLAYER_SPEED) / 64][data->player.pos_y / 64] == 'E' || data->map.map[(data->player.farthest_x + PLAYER_SPEED) / 64][data->player.farthest_y / 64] == 'E');
+	return (0);
 }
 
 int	check_collision(t_solong *data, int key_pressed)
@@ -87,28 +83,36 @@ int	check_collision(t_solong *data, int key_pressed)
 
 void	player_movement(t_solong *data)
 {
-	if (data->keys.w && !check_collision(data, XK_Up))
+	if (data->keys.w && !check_collision(data, XK_Up) && !check_exit_collision(data, XK_Up))
 	{
 		data->player.pos_x -= PLAYER_SPEED;
 		data->player.farthest_x -= PLAYER_SPEED;
-		update_map(data, XK_Up);
+		data->player.move_count++;
+		update_map(data);
 	}
-	if (data->keys.a && !check_collision(data, XK_Left))
+	if (data->keys.a && !check_collision(data, XK_Left) && !check_exit_collision(data, XK_Left))
 	{
 		data->player.pos_y -= PLAYER_SPEED;
 		data->player.farthest_y -= PLAYER_SPEED;
-		update_map(data, XK_Up);
+		data->player.move_count++;
+		update_map(data);
 	}
-	if (data->keys.s && !check_collision(data, XK_Down))
+	if (data->keys.s && !check_collision(data, XK_Down) && !check_exit_collision(data, XK_Down))
 	{
 		data->player.pos_x += PLAYER_SPEED;
 		data->player.farthest_x += PLAYER_SPEED;
-		update_map(data, XK_Down);
+		data->player.move_count++;
+		update_map(data);
 	}
-	if (data->keys.d && !check_collision(data, XK_Right))
+	if (data->keys.d && !check_collision(data, XK_Right) && !check_exit_collision(data, XK_Right))
 	{
 		data->player.pos_y += PLAYER_SPEED;
 		data->player.farthest_y += PLAYER_SPEED;
-		update_map(data, XK_Right);
+		data->player.move_count++;
+		update_map(data);
 	}
+	if (data->keys.w || data->keys.a || data->keys.s || data->keys.d)
+		data->frame++;
+	if (data->frame > 2)
+		data->frame = 0;
 }

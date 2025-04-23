@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 20:22:30 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/22 00:15:41 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 00:55:11 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	game_start(t_solong *data)
 {
 	load_map(data);
 	load_collectibles(data);
-	load_player(data);
+	load_player_0(data);
+	load_player_1(data);
 	load_menu_select(data);
 	draw_tiles(data);
 	mlx_put_image_to_window(data->mlx, data->window, data->final_screen.image, -data->view_x, -data->view_y);

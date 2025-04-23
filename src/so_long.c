@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 17:13:29 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/19 22:27:16 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 00:34:22 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_so_long(t_solong *data)
 {
+	data->frame = 1;
 	data->mlx = NULL;
 	data->window = NULL;
 	data->map.map = NULL;
@@ -22,6 +23,7 @@ void	init_so_long(t_solong *data)
 	data->map.c_collected = 0;
 	data->map.row_count = 0;
 	data->map.col_count = 0;
+	data->player.move_count = 0;
 	data->keys.w = 0;
 	data->keys.a = 0;
 	data->keys.s = 0;

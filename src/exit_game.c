@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 17:21:25 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/15 21:15:57 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/22 23:25:04 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	destroy_image(t_solong *data)
 {
-	if (data->tile_frame.c1.frame_1.image)
-		mlx_destroy_image(data->mlx, data->tile_frame.c1.frame_1.image);
+	if (data->tile_frame.c1[0].image)
+		mlx_destroy_image(data->mlx, data->tile_frame.c1[0].image);
 	if (data->tile_frame.wall.image)
 		mlx_destroy_image(data->mlx, data->tile_frame.wall.image);
 	if (data->tile_frame.floor.image)
 		mlx_destroy_image(data->mlx, data->tile_frame.floor.image);
-	if (data->tile_frame.player.f_stand.image)
-		mlx_destroy_image(data->mlx, data->tile_frame.player.f_stand.image);
+	if (data->tile_frame.player.down_0[1].image)
+		mlx_destroy_image(data->mlx, data->tile_frame.player.down_0[1].image);
 }
 
 void	free_all(t_solong *data, char *str)

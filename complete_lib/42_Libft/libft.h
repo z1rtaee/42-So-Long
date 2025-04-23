@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 12:00:15 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/07 15:00:48 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/22 23:22:24 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <sys/time.h>
 
 typedef struct s_list
 {

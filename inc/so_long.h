@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:11:52 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/22 01:18:08 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 01:24:25 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,38 +21,31 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define PLAYER_SPEED 20
-
-typedef struct s_c_tiles
-{
-	t_img	frame_1;
-	t_img	frame_2;
-	t_img	frame_3;
-	t_img	frame_4;
-}				t_c_tiles;
+# define PLAYER_SPEED 5
+# define FI_MS 125
+# define FPS 60
 
 typedef struct s_player_tiles
 {
-	t_img	f_stand;
-	t_img	l_walk_1;
-	t_img	l_walk_2;
-	t_img	r_walk_1;
-	t_img	r_walk_2;
-	t_img	u_walk_1;
-	t_img	u_walk_2;
-	t_img	d_walk_1;
-	t_img	d_walk_2;
+	t_img	up_0[3];
+	t_img	down_0[3];
+	t_img	left_0[3];
+	t_img	right_0[3];
+	t_img	up_1[3];
+	t_img	down_1[3];
+	t_img	left_1[3];
+	t_img	right_1[3];
 }				t_player_tiles;
 
 typedef struct s_tiles
 {
 	t_player_tiles 	player;
-	t_c_tiles		c1;
-	t_c_tiles		c2;
-	t_c_tiles		c3;
-	t_c_tiles		c4;
-	t_img			open_e;
-	t_img			closed_e;
+	t_img			c1[3];
+	t_img			c2[3];
+	t_img			c3[3];
+	t_img			c4[3];
+	t_img			exit;
+	t_img			enemy;
 	t_img			wall;
 	t_img			floor;
 }				t_tiles;
@@ -69,10 +62,12 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	int	pos_y;
-	int	pos_x;
-	int farthest_x;
-	int farthest_y;
+	int				pos_y;
+	int				pos_x;
+	int				farthest_x;
+	int			 	farthest_y;
+	int				move_count;
+	struct timeval	last_frame;
 }				t_player;
 
 typedef struct s_keys
@@ -108,9 +103,9 @@ typedef struct s_solong
 	int			view_y;
 	int			menu_choice; // 0 = Play, 1 = Credits
 	int			player_choice; // 0 = Bea 1 = Fanta
+	int			frame;
 	t_status	status;
 	t_img		final_screen;
-	t_img		frame_buffer;
 	t_tiles		tile_frame;
 	t_map		map;
 	t_player	player;
@@ -140,7 +135,9 @@ void		exit_error(char *error_message, t_solong *data, char *str, int fd);
 
 void		data_init(t_solong *data);
 
-void		load_player(t_solong *data);
+void		load_player_0(t_solong *data);
+
+void		load_player_1(t_solong *data);
 
 void		load_map(t_solong *data);
 
@@ -158,15 +155,13 @@ void		pixel_put(t_img *img, int x, int y, int color);
 
 void		put_img_to_screen(t_img *screen, t_img img, int screen_x, int screen_y);
 
-int 		key_handle(int keycode, t_solong *data);
-
 void		handle_scroll(t_solong *data);
 
 void		exit_game(char *end_game, t_solong *data);
 
 void		adjust_view(t_solong *data);
 
-void		update_map(t_solong *data, int key_pressed);
+void		update_map(t_solong *data);
 
 int			check_collision(t_solong *data, int key_pressed);
 

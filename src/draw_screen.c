@@ -6,11 +6,39 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:45:56 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/18 20:44:20 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/23 01:27:52 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+void	draw_player_0(t_solong *data)
+{
+	if (data->keys.a)
+		put_img_to_screen(&data->final_screen, data->tile_frame.player.left_0[data->frame], data->player.pos_x, data->player.pos_y + 16);
+	else if (data->keys.w)
+		put_img_to_screen(&data->final_screen, data->tile_frame.player.up_0[data->frame], data->player.pos_x, data->player.pos_y + 16);
+	else if (data->keys.s)
+		put_img_to_screen(&data->final_screen, data->tile_frame.player.down_0[data->frame], data->player.pos_x, data->player.pos_y + 16);
+	else if (data->keys.d)
+		put_img_to_screen(&data->final_screen, data->tile_frame.player.right_0[data->frame], data->player.pos_x, data->player.pos_y + 16);
+	else
+		put_img_to_screen(&data->final_screen, data->tile_frame.player.down_0[1], data->player.pos_x, data->player.pos_y + 16);
+}
+
+void	draw_player_1(t_solong *data)
+{
+	if (data->keys.a)
+		put_img_to_screen(&data->final_screen, data->tile_frame.player.left_1[data->frame], data->player.pos_x, data->player.pos_y + 16);
+	else if (data->keys.w)
+		put_img_to_screen(&data->final_screen, data->tile_frame.player.up_1[data->frame], data->player.pos_x, data->player.pos_y + 16);
+	else if (data->keys.s)
+		put_img_to_screen(&data->final_screen, data->tile_frame.player.down_1[data->frame], data->player.pos_x, data->player.pos_y + 16);
+	else if (data->keys.d)
+		put_img_to_screen(&data->final_screen, data->tile_frame.player.right_1[data->frame], data->player.pos_x, data->player.pos_y + 16);
+	else
+		put_img_to_screen(&data->final_screen, data->tile_frame.player.down_1[1], data->player.pos_x, data->player.pos_y + 16);
+}
 
 void	draw_tiles(t_solong *data)
 {
@@ -18,9 +46,6 @@ void	draw_tiles(t_solong *data)
 	int	y;
 
 	x = 0;
-	//printf("player x -> %d\n player y -> %d\n", data->player.pos_x, data->player.pos_y);
-	//intf("Screen dimensions: width = %d, height = %d\n", data->final_screen.width, data->final_screen.height);
-	//printf("WIDTH = %d, HEIGHT = %d\n", WIDTH, HEIGHT);
 	while(data->map.map[x])
 	{
 		y = 0;
@@ -30,17 +55,21 @@ void	draw_tiles(t_solong *data)
 				put_img_to_screen(&data->final_screen, data->tile_frame.wall, x * 64, y * 64);
 			else if (data->map.map[x][y] == '0')
 				put_img_to_screen(&data->final_screen, data->tile_frame.floor, x * 64, y * 64);
-			if (data->map.map[x][y] == 'P')
+			else if (data->map.map[x][y] == 'P')
 				put_img_to_screen(&data->final_screen, data->tile_frame.floor, x * 64, y * 64);
-			//	put_img_to_screen(&data->final_screen, data->tile_frame.player.f_stand, x * 64, y * 64);
 			else if (data->map.map[x][y] == 'C')
 			{
 				put_img_to_screen(&data->final_screen, data->tile_frame.floor, x * 64, y * 64);
-				put_img_to_screen(&data->final_screen, data->tile_frame.c1.frame_1, x * 64, y * 64);
+				put_img_to_screen(&data->final_screen, data->tile_frame.c1[0], x * 64, y * 64);
 			}
+			else if (data->map.map[x][y] == 'F')
+				put_img_to_screen(&data->final_screen, data->tile_frame.enemy, x * 64, y * 64);
 			//else if (data->map.map[x][y] == 'E')
 				//put_img_to_screen(&data->final_screen, data->tile_frame.closed_e, x * 64, y * 64);
-			put_img_to_screen(&data->final_screen, data->tile_frame.player.f_stand, data->player.pos_x, data->player.pos_y + 16);
+			if (data->player_choice == 0)
+				draw_player_0(data);
+			else if (data->player_choice == 1)
+				draw_player_1(data);
 			y++;
 		}
 		x++;
