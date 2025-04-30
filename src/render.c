@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 19:21:19 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/30 13:41:19 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/30 18:41:27 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ int	render_game(t_solong *data)
 			mlx_string_put(data->mlx, data->window, 10, 1000, 0xFFFFFF, moves);
 			free(moves);
 			}
+		else if (data->status == CREDITS)
+			mlx_put_image_to_window(data->mlx, data->window, data->menu.credits.image, 0, 0);
 		time = 0;
 	}
-	else if (data->status == CREDITS)
-		mlx_put_image_to_window(data->mlx, data->window, data->menu.credits.image, 0, 0);
 	return (0);
 }
 
-void    render_menu(t_solong *data)
+void	render_menu(t_solong *data)
 {
 	mlx_clear_window(data->mlx, data->window);
 	mlx_put_image_to_window(data->mlx, data->window, data->menu.play_menu.image, 0, 0);
@@ -47,7 +47,7 @@ void    render_menu(t_solong *data)
 		mlx_put_image_to_window(data->mlx, data->window, data->menu.credits_menu.image, 0, 0);
 }
 
-void    render_p_select(t_solong *data)
+void	render_p_select(t_solong *data)
 {
 	mlx_clear_window(data->mlx, data->window);
 	if (data->player_choice == 0)
@@ -60,7 +60,7 @@ void    render_p_select(t_solong *data)
 		mlx_put_image_to_window(data->mlx, data->window, data->menu.p_select_0.image, 0, 0);
 }
 
-void    render_gameplay(t_solong *data)
+void	render_gameplay(t_solong *data)
 {
 	player_movement(data);
 	adjust_view(data);

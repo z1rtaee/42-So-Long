@@ -1,14 +1,10 @@
 {
-	"[c]": {
-		"editor.defaultFormatter": "keyhr.42-c-format"
-	},
-	"files.associations": {
-		"so_long.h": "c",
-		"ft_printf.h": "c",
-		"stdbool.h": "c",
-		"time.h": "c",
-		"struct_timeval.h": "c",
-		"mlx.h": "c"
-		
-	}
+  "files.associations": {
+    "so_long.h": "c",
+    "ft_printf.h": "c",
+    "stdbool.h": "c",
+    "time.h": "c",
+    "struct_timeval.h": "c",
+    "mlx.h": "c"
+  }
 }

@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 00:40:29 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/30 13:49:10 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/30 18:14:13 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,7 @@ void	count_characters(t_solong *data, int *p, int *e, int *c)
 		{
 			if (data->map.map[x][y] == 'P')
 			{
-				data->player.pos_x = x * 64;
-				data->player.pos_y = y * 64;
-				data->player.farthest_x = data->player.pos_x + 64 - 1;
-				data->player.farthest_y = data->player.pos_y + 64 - 1;
+				init_player(data, x, y);
 				(*p)++;
 			}
 			else if (data->map.map[x][y] == 'E')
@@ -80,6 +77,14 @@ void	count_characters(t_solong *data, int *p, int *e, int *c)
 		}
 		x++;
 	}
+}
+
+void	init_player(t_solong *data, int x, int y)
+{
+	data->player.pos_x = x * 64;
+	data->player.pos_y = y * 64;
+	data->player.farthest_x = data->player.pos_x + 64 - 1;
+	data->player.farthest_y = data->player.pos_y + 64 - 1;
 }
 
 void	flood_fill(char **map, int x, int y)
