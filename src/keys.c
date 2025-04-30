@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 19:51:00 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/23 01:01:14 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/30 13:47:13 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	key_released(int keycode, t_solong *data)
 	return (0);
 }
 
-int key_pressed(int keycode, t_solong *data)
+int	key_pressed(int keycode, t_solong *data)
 {
 	if (data->status == MENU)
 		return (handle_menu_input(keycode, data));
@@ -33,9 +33,8 @@ int key_pressed(int keycode, t_solong *data)
 		return (handle_p_select_input(keycode, data));
 	else if (data->status == GAME)
 		return (handle_game_input(keycode, data));
-	else
-		if (keycode == XK_Escape)
-			data->status = MENU;
+	else if (keycode == XK_Escape)
+		data->status = MENU;
 	return (0);
 }
 
@@ -51,10 +50,6 @@ int	handle_game_input(int keycode, t_solong *data)
 		data->keys.s = 1;
 	if (keycode == XK_Right || keycode == XK_d)
 		data->keys.d = 1;
-	//if (keycode == XK_Up || keycode == XK_w || keycode == XK_Left || keycode == XK_a || keycode == XK_Right || keycode == XK_d || keycode == XK_Down || keycode == XK_s)
-	//	data->frame++;
-	//if (data->frame > 2)
-	//	data->frame = 0;
 	return (0);
 }
 
@@ -65,7 +60,7 @@ int	handle_menu_input(int keycode, t_solong *data)
 	else if (keycode == XK_Return)
 	{
 		if (data->menu_choice == 0)
-			data->status = PLAYER_SELECT; //Player select
+			data->status = PLAYER_SELECT;
 		else
 			data->status = CREDITS;
 	}

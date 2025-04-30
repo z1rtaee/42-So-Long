@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 19:21:19 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/23 18:38:33 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/30 13:41:19 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	render_game(t_solong *data)
 			}
 		time = 0;
 	}
-//	else if (data->status == CREDITS)
-//		render_credits(data);
+	else if (data->status == CREDITS)
+		mlx_put_image_to_window(data->mlx, data->window, data->menu.credits.image, 0, 0);
 	return (0);
 }
 
@@ -64,12 +64,7 @@ void    render_gameplay(t_solong *data)
 {
 	player_movement(data);
 	adjust_view(data);
-	draw_tiles(data);
+	draw_screen(data);
 	mlx_clear_window(data->mlx, data->window);
-	mlx_put_image_to_window(data->mlx, data->window, data->final_screen.image, -data->view_y, -data->view_x);
+	mlx_put_image_to_window(data->mlx, data->window, data->screen.image, -data->view_y, -data->view_x);
 }
-
-//void    render_credits(t_solong *data)
-//{
-//	
-//}

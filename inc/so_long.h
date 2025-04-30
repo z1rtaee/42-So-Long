@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:11:52 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/23 18:40:11 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/30 13:41:19 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_menu
 	t_img	play_menu;
 	t_img	p_select_0;
 	t_img	p_select_1;
+	t_img	credits;
 }				t_menu;
 
 typedef enum e_status
@@ -105,7 +106,7 @@ typedef struct s_solong
 	int			player_choice; // 0 = Bea 1 = Fanta
 	int			frame;
 	t_status	status;
-	t_img		final_screen;
+	t_img		screen;
 	t_tiles		tile_frame;
 	t_map		map;
 	t_player	player;
@@ -145,9 +146,13 @@ void		load_collectibles(t_solong *data);
 
 void		load_menu_select(t_solong *data);
 
-void		draw_tiles(t_solong *data);
+void		draw_screen(t_solong *data);
 
-void		draw_rendered(t_solong *data);
+void		draw_tiles(t_solong *data, int x, int y);
+
+void		draw_player_0(t_solong *data);
+
+void		draw_player_1(t_solong *data);
 
 void		get_adr_collectibles(t_solong *data);
 

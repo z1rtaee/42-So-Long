@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 00:40:29 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/23 18:53:15 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/30 13:49:10 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	cpy_map(t_map *map)
 
 void	count_characters(t_solong *data, int *p, int *e, int *c)
 {
-	int		y;
-	int		x;
+	int	y;
+	int	x;
 
 	x = 0;
 	while (data->map.map[x])
@@ -67,14 +67,14 @@ void	count_characters(t_solong *data, int *p, int *e, int *c)
 				data->player.pos_y = y * 64;
 				data->player.farthest_x = data->player.pos_x + 64 - 1;
 				data->player.farthest_y = data->player.pos_y + 64 - 1;
-				//printf("player's x-axis position -> %i\n player's y-axis position -> %i\n", data->player.pos_x, data->player.pos_y);
 				(*p)++;
 			}
 			else if (data->map.map[x][y] == 'E')
 				(*e)++;
 			else if (data->map.map[x][y] == 'C')
 				(*c)++;
-			else if (data->map.map[x][y] != '0' && data->map.map[x][y] != '1' && data->map.map[x][y] != 'F' && data->map.map[x][y] != '\n')
+			else if (data->map.map[x][y] != '0' && data->map.map[x][y] != '1'
+				&& data->map.map[x][y] != 'F' && data->map.map[x][y] != '\n')
 				exit_error("Error", data, NULL, -1);
 			y++;
 		}
@@ -86,9 +86,12 @@ void	flood_fill(char **map, int x, int y)
 {
 	if (map[x][y] == '1' || map[x][y] == 'F')
 		return ;
-	map[x][y] = '1';
 	if (map[x][y] == 'E')
+	{
+		map[x][y] = '1';
 		return ;
+	}
+	map[x][y] = '1';
 	flood_fill(map, x + 1, y);
 	flood_fill(map, x - 1, y);
 	flood_fill(map, x, y + 1);

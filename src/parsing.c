@@ -104,8 +104,8 @@ void	is_solvable(t_solong *data)
 		y = 0;
 		while (data->map.map_cpy[x][y])
 		{
-			if (data->map.map_cpy[x][y] != '1' && data->map.map_cpy[x][y] != 'F' && data->map.map_cpy[x][y] == 'E')
-				exit_error("Map is not solvable", data, NULL, -1);
+			if (data->map.map_cpy[x][y] != '1' && data->map.map_cpy[x][y] != 'F' && data->map.map_cpy[x][y] != '0')
+				exit_error("Error", data, NULL, -1);
 			y++;
 		}
 		x++;

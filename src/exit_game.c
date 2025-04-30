@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 17:21:25 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/23 16:28:47 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/04/30 13:41:19 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	free_all(t_solong *data, char *str)
 		free_ar((void **)data->map.map);
 	if (data->map.map_cpy)
 		free_ar((void **)data->map.map_cpy);
-	if (data->final_screen.image)
-		mlx_destroy_image(data->mlx, data->final_screen.image);
+	if (data->screen.image)
+		mlx_destroy_image(data->mlx, data->screen.image);
 	if (data->window)
 		mlx_destroy_window(data->mlx, data->window);
 	destroy_image(data);
