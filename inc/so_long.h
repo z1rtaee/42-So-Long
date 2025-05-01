@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:11:52 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/05/01 12:42:05 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 12:46:28 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_player_tiles
 
 typedef struct s_tiles
 {
-	t_player_tiles 	player;
+	t_player_tiles	player;
 	t_img			c1[3];
 	t_img			exit;
 	t_img			enemy;
@@ -62,17 +62,17 @@ typedef struct s_player
 	int				pos_y;
 	int				pos_x;
 	int				farthest_x;
-	int			 	farthest_y;
+	int				farthest_y;
 	int				move_count;
 	struct timeval	last_frame;
 }				t_player;
 
 typedef struct s_keys
 {
-	int w;
-	int a;
-	int s;
-	int d;
+	int	w;
+	int	a;
+	int	s;
+	int	d;
 }				t_keys;
 
 typedef struct s_menu
@@ -109,7 +109,7 @@ typedef struct s_solong
 	t_keys		keys;
 	t_menu		menu;
 }			t_solong;
- 
+
 /// @brief Init : Initializes non related to mlx data from the struct
 /// @param data Main struct that gives access to all data
 void			init_so_long(t_solong *data);
@@ -118,7 +118,8 @@ void			init_so_long(t_solong *data);
 void			data_init(t_solong *data);
 
 //Exit and Free everything in case of error or in game end.
-void			exit_error(char *error_message, t_solong *data, char *str, int fd);
+void			exit_error(char *error_message,
+					t_solong *data, char *str, int fd);
 void			exit_game(char *end_game, t_solong *data);
 int				x_window(t_solong *data);
 
@@ -158,7 +159,8 @@ void			draw_tiles(t_solong *data, int x, int y);
 void			draw_player_0(t_solong *data);
 void			draw_player_1(t_solong *data);
 void			pixel_put(t_img *img, int x, int y, int color);
-void			put_img_to_screen(t_img *screen, t_img img, int screen_x, int screen_y);
+void			put_img_to_screen(t_img *screen, t_img img,
+					int screen_x, int screen_y);
 
 //Keys Handle
 int				key_released(int keycode, t_solong *data);
@@ -187,87 +189,4 @@ void			update_map(t_solong *data);
 int				check_collision(t_solong *data, int key_pressed);
 int				check_exit_collision(t_solong *data, int key_pressed);
 
-
-/*
-bool		check_map_name(char *map);
-
-void		create_map(char *map, int rows, t_solong *data);
-
-void		read_map(char *map, t_solong *data);
-
-void		count_characters(t_solong *data, int *p, int *e, int *c);
-
-void		check_characters(t_solong *data);
-
-void		check_walls(t_solong *data);
-
-void		cpy_map(t_map *map);
-
-void		flood_fill(char **map, int x, int y);
-
-void		is_solvable(t_solong *data);
-
-void		exit_error(char *error_message, t_solong *data, char *str, int fd);
-
-void		data_init(t_solong *data);
-
-void		load_player_0(t_solong *data);
-
-void		load_player_1(t_solong *data);
-
-void		load_map(t_solong *data);
-
-void		load_collectibles_enemy(t_solong *data);
-
-void		load_menu_credits(t_solong *data);
-
-void		draw_screen(t_solong *data);
-
-void		draw_tiles(t_solong *data, int x, int y);
-
-void		draw_player_0(t_solong *data);
-
-void		draw_player_1(t_solong *data);
-
-void		get_adr_collectibles(t_solong *data);
-
-void		pixel_put(t_img *img, int x, int y, int color);
-
-void		put_img_to_screen(t_img *screen, t_img img, int screen_x, int screen_y);
-
-void		handle_scroll(t_solong *data);
-
-void		exit_game(char *end_game, t_solong *data);
-
-void		adjust_view(t_solong *data);
-
-void		update_map(t_solong *data);
-
-int			check_collision(t_solong *data, int key_pressed);
-
-int			x_window(t_solong *data);
-
-void	    render_gameplay(t_solong *data);
-
-int			render_game(t_solong *data);
-
-void    	render_menu(t_solong *data);
-
-void		render_p_select(t_solong *data);
-
-void		game_start(t_solong *data);
-
-int			key_pressed(int keycode, t_solong *data);
-
-int			key_released(int keycode, t_solong *data);
-
-void		player_movement(t_solong *data);
-
-int			handle_game_input(int keycode, t_solong *data);
-
-int			handle_menu_input(int keycode, t_solong *data);
-
-int			handle_p_select_input(int keycode, t_solong *data);
-
-double		get_delta_time(void);*/
 #endif

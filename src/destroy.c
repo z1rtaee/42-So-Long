@@ -6,13 +6,13 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:05:16 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/05/01 12:42:01 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 12:44:27 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static void destroy_map(t_solong *data)
+static void	destroy_map(t_solong *data)
 {
 	if (data->tile_frame.c1[0].image)
 		mlx_destroy_image(data->mlx, data->tile_frame.c1[0].image);
@@ -26,7 +26,7 @@ static void destroy_map(t_solong *data)
 		mlx_destroy_image(data->mlx, data->tile_frame.enemy.image);
 }
 
-static void destroy_player_0(t_solong *data)
+static void	destroy_player_0(t_solong *data)
 {
 	if (data->tile_frame.player.down_0[0].image)
 		mlx_destroy_image(data->mlx, data->tile_frame.player.down_0[0].image);
@@ -37,24 +37,24 @@ static void destroy_player_0(t_solong *data)
 	if (data->tile_frame.player.up_0[0].image)
 		mlx_destroy_image(data->mlx, data->tile_frame.player.up_0[0].image);
 	if (data->tile_frame.player.up_0[1].image)
-    	mlx_destroy_image(data->mlx, data->tile_frame.player.up_0[1].image);
+		mlx_destroy_image(data->mlx, data->tile_frame.player.up_0[1].image);
 	if (data->tile_frame.player.up_0[2].image)
-    	mlx_destroy_image(data->mlx, data->tile_frame.player.up_0[2].image);
+		mlx_destroy_image(data->mlx, data->tile_frame.player.up_0[2].image);
 	if (data->tile_frame.player.left_0[0].image)
 		mlx_destroy_image(data->mlx, data->tile_frame.player.left_0[0].image);
 	if (data->tile_frame.player.left_0[1].image)
-    	mlx_destroy_image(data->mlx, data->tile_frame.player.left_0[1].image);
+		mlx_destroy_image(data->mlx, data->tile_frame.player.left_0[1].image);
 	if (data->tile_frame.player.left_0[2].image)
-    	mlx_destroy_image(data->mlx, data->tile_frame.player.left_0[2].image);
+		mlx_destroy_image(data->mlx, data->tile_frame.player.left_0[2].image);
 	if (data->tile_frame.player.right_0[0].image)
 		mlx_destroy_image(data->mlx, data->tile_frame.player.right_0[0].image);
 	if (data->tile_frame.player.right_0[1].image)
-    	mlx_destroy_image(data->mlx, data->tile_frame.player.right_0[1].image);
+		mlx_destroy_image(data->mlx, data->tile_frame.player.right_0[1].image);
 	if (data->tile_frame.player.right_0[2].image)
-    	mlx_destroy_image(data->mlx, data->tile_frame.player.right_0[2].image);
+		mlx_destroy_image(data->mlx, data->tile_frame.player.right_0[2].image);
 }
 
-static void destroy_player_1(t_solong *data)
+static void	destroy_player_1(t_solong *data)
 {
 	if (data->tile_frame.player.down_1[0].image)
 		mlx_destroy_image(data->mlx, data->tile_frame.player.down_1[0].image);
@@ -65,21 +65,21 @@ static void destroy_player_1(t_solong *data)
 	if (data->tile_frame.player.up_1[0].image)
 		mlx_destroy_image(data->mlx, data->tile_frame.player.up_1[0].image);
 	if (data->tile_frame.player.up_1[1].image)
-    	mlx_destroy_image(data->mlx, data->tile_frame.player.up_1[1].image);
+		mlx_destroy_image(data->mlx, data->tile_frame.player.up_1[1].image);
 	if (data->tile_frame.player.up_1[2].image)
-    	mlx_destroy_image(data->mlx, data->tile_frame.player.up_1[2].image);
+		mlx_destroy_image(data->mlx, data->tile_frame.player.up_1[2].image);
 	if (data->tile_frame.player.left_1[0].image)
 		mlx_destroy_image(data->mlx, data->tile_frame.player.left_1[0].image);
 	if (data->tile_frame.player.left_1[1].image)
-    	mlx_destroy_image(data->mlx, data->tile_frame.player.left_1[1].image);
+		mlx_destroy_image(data->mlx, data->tile_frame.player.left_1[1].image);
 	if (data->tile_frame.player.left_1[2].image)
-    	mlx_destroy_image(data->mlx, data->tile_frame.player.left_1[2].image);
+		mlx_destroy_image(data->mlx, data->tile_frame.player.left_1[2].image);
 	if (data->tile_frame.player.right_1[0].image)
 		mlx_destroy_image(data->mlx, data->tile_frame.player.right_1[0].image);
 	if (data->tile_frame.player.right_1[1].image)
-    	mlx_destroy_image(data->mlx, data->tile_frame.player.right_1[1].image);
+		mlx_destroy_image(data->mlx, data->tile_frame.player.right_1[1].image);
 	if (data->tile_frame.player.right_1[2].image)
-    	mlx_destroy_image(data->mlx, data->tile_frame.player.right_1[2].image);
+		mlx_destroy_image(data->mlx, data->tile_frame.player.right_1[2].image);
 }
 
 static void	destroy_menu_select_credits(t_solong *data)
