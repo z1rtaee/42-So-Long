@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:11:52 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/30 18:40:17 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 12:42:05 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ typedef struct s_tiles
 {
 	t_player_tiles 	player;
 	t_img			c1[3];
-	t_img			c2[3];
-	t_img			c3[3];
-	t_img			c4[3];
 	t_img			exit;
 	t_img			enemy;
 	t_img			wall;
@@ -80,7 +77,6 @@ typedef struct s_keys
 
 typedef struct s_menu
 {
-	t_img	menu;
 	t_img	credits_menu;
 	t_img	play_menu;
 	t_img	p_select_0;
@@ -102,8 +98,8 @@ typedef struct s_solong
 	void		*window;
 	int			view_x;
 	int			view_y;
-	int			menu_choice; // 0 = Play, 1 = Credits
-	int			player_choice; // 0 = Bea 1 = Fanta
+	int			menu_choice;
+	int			player_choice;
 	int			frame;
 	t_status	status;
 	t_img		screen;

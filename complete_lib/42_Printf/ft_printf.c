@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:11:28 by bpires-r          #+#    #+#             */
-/*   Updated: 2024/11/21 18:06:37 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:06:08 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,14 +110,3 @@ int	ft_printf(const char *s, ...)
 	va_end (arg_lst);
 	return (res);
 }
-
-// int	main(void)
-// {
-// 	char *s = NULL;
-// 	ft_printf("%d\n", 23);
-// 	ft_printf("%s\n", s);
-// 	printf("%s\n", s);
-// 	ft_printf("%p\n",s);
-// 	printf("%p\n", s);
-// 	return (0);
-// }

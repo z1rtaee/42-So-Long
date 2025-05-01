@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 17:45:15 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/06 19:42:01 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:06:29 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,3 @@ char	**ft_split(char *s, char c)
 	res[i] = NULL;
 	return (res);
 }
-
-// int	main(void)
-// {
-// 	unsigned int i = 0;
-// 	unsigned int j = 0;
-// 	printf("%p\n", *ft_split("               ", ' '));
-// 	return (0);
-// }

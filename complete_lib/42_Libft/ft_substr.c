@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 19:42:36 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/07 14:54:47 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:06:18 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,3 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	sub[stsub] = '\0';
 	return (free(s), sub);
 }
-
-// int	main(void)
-// {
-// 	printf("%s\n", ft_substr("Batata Frita", 7, 13));
-// 	return (0);
-// }

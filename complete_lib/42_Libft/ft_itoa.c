@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zirtaee <zirtaee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:48:45 by bpires-r          #+#    #+#             */
-/*   Updated: 2024/11/16 00:15:38 by zirtaee          ###   ########.fr       */
+/*   Updated: 2025/05/01 11:05:29 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,3 @@ char	*ft_itoa(int n)
 		res[0] = '-';
 	return (res);
 }
-
-// int	main(void)
-// {
-// 	printf("%s\n", ft_itoa(1234));
-// 	printf("%s\n", ft_itoa(-1234));
-// 	return (0);
-// }

@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:47:07 by bpires-r          #+#    #+#             */
-/*   Updated: 2024/11/08 14:40:46 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:06:00 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,3 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
-
-// int	main(void)
-// {
-// 	char s[20] = "Hello :)))";
-// 	printf("My Func : %s\n", (char *)ft_memset(s, 'A', 5));
-// 	printf("Original Func : %s\n", (char *)memset(s, 'A', 5));
-// 	return (0);
-// }

@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:14:31 by bpires-r          #+#    #+#             */
-/*   Updated: 2024/11/08 16:10:35 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:06:38 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	result[r] = '\0';
 	return (result);
 }
-
-// int	main(void)
-// {
-// 	char *s1 = "ola";
-// 	char *s2 = "adeus";
-// 	printf("%s\n", ft_strjoin(s1, s2));
-// 	return (0);
-// }

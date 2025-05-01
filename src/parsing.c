@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 17:08:47 by bpires-r          #+#    #+#             */
- /*   Updated: 2025/04/08 19:14:00 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:42:38 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,15 @@ void	check_walls(t_solong *data)
 	data->map.col_count = ft_strlen(data->map.map[0]);
 	while (y < data->map.col_count)
 	{
-		if (data->map.map[0][y] != '1' 
-			   || data->map.map[data->map.row_count - 1][y] != '1')
+		if (data->map.map[0][y] != '1'
+				|| data->map.map[data->map.row_count - 1][y] != '1')
 			exit_error("Error", data, NULL, -1);
 		y++;
 	}
 	while (x < data->map.row_count)
 	{
-		if (data->map.map[x][0] != '1' 
-			   || data->map.map[x][data->map.col_count - 1] != '1')
+		if (data->map.map[x][0] != '1'
+				|| data->map.map[x][data->map.col_count - 1] != '1')
 			exit_error("Error", data, NULL, -1);
 		x++;
 	}
@@ -91,20 +91,23 @@ void	check_walls(t_solong *data)
 
 void	is_solvable(t_solong *data)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
 	cpy_map(&data->map);
-	flood_fill(data->map.map_cpy, data->player.pos_x / 64, data->player.pos_y / 64);
+	flood_fill(data->map.map_cpy, data->player.pos_x / 64,
+		data->player.pos_y / 64);
 	x = 0;
 	while (data->map.map_cpy[x])
 	{
 		y = 0;
 		while (data->map.map_cpy[x][y])
 		{
-			if (data->map.map_cpy[x][y] != '1' && data->map.map_cpy[x][y] != 'F' && data->map.map_cpy[x][y] != '0')
+			if (data->map.map_cpy[x][y] != '1'
+				&& data->map.map_cpy[x][y] != 'F'
+				&& data->map.map_cpy[x][y] != '0')
 				exit_error("Error", data, NULL, -1);
 			y++;
 		}

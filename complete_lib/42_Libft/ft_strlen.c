@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:28:23 by bpires-r          #+#    #+#             */
-/*   Updated: 2024/11/08 14:30:10 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:06:34 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,3 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-
-// int	main(void)
-// {
-// 	printf("My Func : %zu\n", ft_strlen("Ola"));
-// 	printf("tamanho: %zu\n", sizeof(size_t));
-// 	return (0);
-// }

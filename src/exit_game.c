@@ -6,23 +6,11 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 17:21:25 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/30 13:41:19 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 12:06:44 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-void	destroy_image(t_solong *data)
-{
-	if (data->tile_frame.c1[0].image)
-		mlx_destroy_image(data->mlx, data->tile_frame.c1[0].image);
-	if (data->tile_frame.wall.image)
-		mlx_destroy_image(data->mlx, data->tile_frame.wall.image);
-	if (data->tile_frame.floor.image)
-		mlx_destroy_image(data->mlx, data->tile_frame.floor.image);
-	if (data->tile_frame.player.down_0[1].image)
-		mlx_destroy_image(data->mlx, data->tile_frame.player.down_0[1].image);
-}
 
 void	free_all(t_solong *data, char *str)
 {

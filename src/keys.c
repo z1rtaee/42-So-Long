@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 19:51:00 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/30 13:47:13 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:07:33 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,5 @@ int	handle_p_select_input(int keycode, t_solong *data)
 		data->status = GAME;
 	else if (keycode == XK_Escape)
 		data->status = MENU;
-	printf("player choice -> %d\n", data->player_choice);
 	return (0);
 }

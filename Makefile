@@ -14,7 +14,8 @@ SRC_DIR			= src/
 SRCS	 		= $(SRC_DIR)so_long.c $(SRC_DIR)parsing.c $(SRC_DIR)exit_game.c $(SRC_DIR)map_utils.c \
 				  $(SRC_DIR)draw_screen.c $(SRC_DIR)load_map.c $(SRC_DIR)moves.c $(SRC_DIR)game_start.c \
 				  $(SRC_DIR)render.c $(SRC_DIR)keys.c $(SRC_DIR)delta_time.c $(SRC_DIR)draw_player.c \
-				  $(SRC_DIR)load_player_1.c $(SRC_DIR)load_player_0.c 
+				  $(SRC_DIR)load_player_1.c $(SRC_DIR)load_player_0.c $(SRC_DIR)player_move.c \
+				  $(SRC_DIR)destroy.c
 
 OBJS 			= $(SRCS:%.c=%.o)
 

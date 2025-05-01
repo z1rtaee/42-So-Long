@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:26:24 by bpires-r          #+#    #+#             */
-/*   Updated: 2024/11/08 14:57:48 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:05:50 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		ft_memcpy(cdest, csrc, n);
 	return (dest);
 }
-
-// int	main(void)
-// {
-// 	char *src = "123456789";
-// 	char dest[20];
-// 	printf("My Func : %s\n", (char *)ft_memmove(dest, src, 3));
-// 	printf("My Func : %s\n", (char *)memmove(dest, src, 3));
-// 	return (0);
-// }

@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 10:56:42 by bpires-r          #+#    #+#             */
-/*   Updated: 2025/04/07 14:44:56 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:06:14 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,3 @@ char	*ft_strtrim(char *s1, char const *set)
 		return (free(s1), ft_strdup(""));
 	return (ft_substr(s1, i, j - i + 1));
 }
-
-// int	main(void)
-// {
-// 	char *s1 = "aba123aba";
-// 	char *set = "ab";
-// 	printf("%s\n", ft_strtrim(s1, set));
-// 	return (0);
-// }

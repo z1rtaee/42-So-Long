@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:31:50 by bpires-r          #+#    #+#             */
-/*   Updated: 2024/11/08 18:37:28 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:05:40 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,3 @@ t_list	*ft_lstnew(void *content)
 	new_node->next = NULL;
 	return (new_node);
 }
-
-// int	main(void)
-// {
-// 	t_list *struct1 = ft_lstnew("capybara");
-// 	printf("%s\n", (char *)struct1->content);
-// 	return (0);
-// }

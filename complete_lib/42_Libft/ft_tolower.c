@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:40:52 by bpires-r          #+#    #+#             */
-/*   Updated: 2024/11/08 15:19:34 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:06:26 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,3 @@ int	ft_tolower(int c)
 		return (c + 32);
 	return (c);
 }
-
-// int	main(void)
-// {
-// 	printf("My Func : %i", ft_tolower('A'));
-// 	return (0);
-// }

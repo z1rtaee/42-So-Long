@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:41:41 by bpires-r          #+#    #+#             */
-/*   Updated: 2024/11/08 15:22:32 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:06:48 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
-
-// int	main(void)
-// {
-// 	char *s = "olo";
-// 	printf("My Func : %p", ft_strrchr(s, 'o'));
-// 	return (0);
-// }

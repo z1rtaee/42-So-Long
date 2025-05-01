@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:43:28 by bpires-r          #+#    #+#             */
-/*   Updated: 2024/11/08 15:51:19 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:06:52 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,3 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 	}
 	return (0);
 }
-
-// int	main(void)
-// {
-// 	char *s1 = "Sweater";
-// 	char *s2 = "eat";
-// 	printf("My Func : %s\n", ft_strnstr(s1, s2, sizeof(s1)));
-// 	return (0);
-// }

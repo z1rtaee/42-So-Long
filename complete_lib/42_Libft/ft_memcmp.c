@@ -6,7 +6,7 @@
 /*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:47:15 by bpires-r          #+#    #+#             */
-/*   Updated: 2024/11/08 15:35:17 by bpires-r         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:05:47 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-
-// int	main(void)
-// {
-// 	char *s1 = "aaaa";
-// 	char *s2 = "aaab";
-// 	printf("My Func : %i", ft_memcmp(s1, s2, sizeof(s1)));
-// 	return (0);
-// }

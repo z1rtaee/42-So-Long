@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zirtaee <zirtaee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bpires-r <bpires-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:03:57 by bpires-r          #+#    #+#             */
-/*   Updated: 2024/11/16 01:11:18 by zirtaee          ###   ########.fr       */
+/*   Updated: 2025/05/01 11:06:45 by bpires-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	res[i] = '\0';
 	return (res);
 }
-
-// char	toupperr(unsigned int i, char c)
-// {
-// 	i = 1;
-// 	if (c >= 'a' && c <= 'z')
-// 		return (c - 32);
-// 	return (c);
-// }
-// int	main(void)
-// {
-// 	char *s = "america";
-// 	printf("%s\n", ft_strmapi(s, toupperr));
-// 	return (0);
-// }
